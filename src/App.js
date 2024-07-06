@@ -1,24 +1,34 @@
-import logo from './logo.svg';
 import './App.css';
+import { useDispatch, useSelector } from 'react-redux';
+import ErrorBoundary from './components/ErrorBoundary';
+import AppLayout from './components/AppLayout';
+import SearchBar from './components/SearchBar';
+import CurrentWeather from './components/CurrentWeather';
+import WeatherChart from './components/WeatherChart';
+import Forecast from './components/Forecast'; 
+import GlobeMap from './components/GlobeMap';
+import { fetchCountryForecast, fetchCountryWeather } from './redux/actions/weatherActions';
 
 function App() {
+  const dispatch = useDispatch();
+  const weatherData = useSelector((state) => state.weather.weatherData);
+  const forecastData = useSelector((state) => state.weather.forecastData);
+
+  const handleSearch = (country) => {
+    dispatch(fetchCountryWeather(country));
+    dispatch(fetchCountryForecast(country));
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ErrorBoundary>
+    <AppLayout>
+      <GlobeMap />
+      <SearchBar onSearch={handleSearch} />
+      {weatherData && <CurrentWeather weather={weatherData} />}
+      {forecastData.length > 0 && <Forecast forecast={forecastData} />}
+      {forecastData.length > 0 && <WeatherChart data={forecastData} />}
+    </AppLayout>
+  </ErrorBoundary>
   );
 }
 
