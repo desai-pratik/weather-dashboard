@@ -12,18 +12,20 @@ const SearchBar = ({ onSearch }) => {
   };
 
   return (
-    <TextField
-      label="Search Country"
-      variant="outlined"
-      value={city}
-      onChange={(e) => setCity(e.target.value)}
-      onKeyDown={(e) => {
-        if (e.key === 'Enter') {
-          handleSearch();
-        }
-      }}
-      fullWidth
-    />
+    <div>
+      <TextField
+        label="Search Country"
+        variant="outlined"
+        value={city}
+        onChange={(e) => setCity(e.target.value)}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter') {
+            handleSearch();
+          }
+        }}
+        fullWidth
+      />
+    </div>
   );
 };
 

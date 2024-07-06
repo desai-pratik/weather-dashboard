@@ -1,6 +1,6 @@
 import React, { useRef, useEffect  } from 'react';
 import Globe from 'react-globe.gl';
-import * as THREE from 'three';
+// import * as THREE from 'three';
 import { useDispatch } from 'react-redux';
 import { fetchCountryForecast, fetchCountryWeather } from '../redux/actions/weatherActions';
 
@@ -32,7 +32,8 @@ const GlobeMap = () => {
   };
   
   return (
-    <div style={{ width: '100vw', height: '85vh', overflow:"hidden" }}>
+    <div style={{ width: '100vw', height: '90vh', overflow:"hidden" }}>
+      <h3>Click on Country</h3>
     <Globe
         ref={globeEl}
         globeImageUrl="//unpkg.com/three-globe/example/img/earth-blue-marble.jpg"
@@ -45,7 +46,6 @@ const GlobeMap = () => {
         enablePointerInteraction={true}
         onGlobeClick={({ lat, lng }) => handleCountryClick({ lat, lng })}
       />
-      <h3>Click on Country</h3>
     </div>
   );
 };
