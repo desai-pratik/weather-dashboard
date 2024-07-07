@@ -42,6 +42,10 @@ const GlobeMap = () => {
           Click on Country
         </Typography>
       </Box>
+      <Box
+        display="flex"
+        justifyContent="center"
+      >
       <Globe
         ref={globeEl}
         globeImageUrl="//unpkg.com/three-globe/example/img/earth-day.jpg"
@@ -54,6 +58,7 @@ const GlobeMap = () => {
         enablePointerInteraction={true}
         onGlobeClick={({ lat, lng }) => handleCountryClick({ lat, lng })}
       />
+      </Box>
     </div>
   );
 };
