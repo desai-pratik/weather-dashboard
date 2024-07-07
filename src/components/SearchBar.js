@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { TextField } from '@mui/material';
+import { Container, TextField } from '@mui/material';
 
 const SearchBar = ({ onSearch }) => {
   const [city, setCity] = useState('');
@@ -12,7 +12,7 @@ const SearchBar = ({ onSearch }) => {
   };
 
   return (
-    <div>
+    <Container maxWidth="md" sx={{ marginTop: '15px' }}>
       <TextField
         label="Search Country"
         variant="outlined"
@@ -25,7 +25,7 @@ const SearchBar = ({ onSearch }) => {
         }}
         fullWidth
       />
-    </div>
+    </Container>
   );
 };
 

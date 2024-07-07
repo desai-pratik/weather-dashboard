@@ -1,8 +1,9 @@
-import React, { useRef, useEffect  } from 'react';
+import React, { useRef, useEffect } from 'react';
 import Globe from 'react-globe.gl';
 // import * as THREE from 'three';
 import { useDispatch } from 'react-redux';
 import { fetchCountryForecast, fetchCountryWeather } from '../redux/actions/weatherActions';
+import { Box, Typography } from '@mui/material';
 
 const GlobeMap = () => {
   const globeEl = useRef();
@@ -30,13 +31,20 @@ const GlobeMap = () => {
       console.error('Error fetching country data:', error);
     }
   };
-  
+
   return (
-    <div style={{ width: '100vw', height: '90vh', overflow:"hidden" }}>
-      <h3>Click on Country</h3>
-    <Globe
+    <div style={{ height: '90vh', overflow: "hidden" }}>
+      <Box
+        display="flex"
+        justifyContent="center"
+      >
+        <Typography variant="h6" component="h6">
+          Click on Country
+        </Typography>
+      </Box>
+      <Globe
         ref={globeEl}
-        globeImageUrl="//unpkg.com/three-globe/example/img/earth-blue-marble.jpg"
+        globeImageUrl="//unpkg.com/three-globe/example/img/earth-day.jpg"
         bumpImageUrl="//unpkg.com/three-globe/example/img/earth-topology.png"
         backgroundImageUrl="//unpkg.com/three-globe/example/img/night-sky.png"
         showGraticules={true}

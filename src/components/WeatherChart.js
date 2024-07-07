@@ -11,6 +11,7 @@ import {
   Legend,
 } from 'chart.js';
 import { format } from 'date-fns';
+import { Container } from '@mui/material';
 
 // Register the components
 ChartJS.register(
@@ -37,7 +38,11 @@ const WeatherChart = ({ data }) => {
     ],
   };
 
-  return <Line data={chartData} />;
+  return (
+    <Container fixed>
+      <Line data={chartData} />
+    </Container>
+  );
 };
 
 export default WeatherChart;
